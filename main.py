@@ -33,22 +33,6 @@ freq=1000000000
 clkgen.set_freq(si5351.CLK2, freq)
 clkgen.output_enable(si5351.CLK2, True)
 
-def sanitycheck(timer, ccount):
-    global b1count, b2count, tcheck, b1pressdb, b2pressdb
-    if(tcheck is True):
-        print("c1c {} b1c {} c2c {} b2c {}".format(c1count, b1count,c2count,b2count))
-        if(b1count is ccount+1):
-            print("double")
-            b1count+=1
-            b1pressbd=True
-        elif(b2count is ccount+1):
-            print("double")
-            b2count+=1
-            b2pressbd=True
-        tcheck = False
-        print("end of tcheck")
-    gc.collect()
-
 last_time = 0
 
 def handler(bt):
