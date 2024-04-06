@@ -63,8 +63,8 @@ b2f = lambda a: handler(1)
 b1.irq(handler=b1f, trigger=Pin.IRQ_RISING)
 b2.irq(handler=b2f, trigger=Pin.IRQ_RISING)
 
-mmain = Menu("SI5351",[["si5351: ",si5351stat,70],["f: ",freq,45]],True)
-msettings = Menu("Settings",[["si5351: ",si5351stat,50]],False)
+mmain = Menu("SI5351",[["si5351: ",si5351stat,70],["freq: ",freq,70]],True)
+msettings = Menu("Settings",[["si5351: ",si5351stat,70]],False)
 
 menulist = [mmain,msettings]
 menulist[0].item[1][1] = freq / 100000000
