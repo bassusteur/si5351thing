@@ -79,20 +79,25 @@ b2f = lambda a: handler(1)
 b1.irq(handler=b1f, trigger=Pin.IRQ_RISING)
 b2.irq(handler=b2f, trigger=Pin.IRQ_RISING)
 
-mmain = Menu("Main",[["si5351: ",si5351stat,90],["f: ",freq,45]],True)
+mmain = Menu("SI5351",[["si5351: ",si5351stat,70],["f: ",freq,45]],True)
 msettings = Menu("Settings",[["si5351: ",si5351stat,50]],False)
 
 menulist = [mmain,msettings]
+menulist[0].item[1][1] = freq / 100000000
 
 while True:
     if(b1press is True):
-        freq = freq+100000000
+        b1press=False
+        freq = freq+10000000
         clkgen.set_freq(si5351.CLK2, freq)
         clkgen.output_enable(si5351.CLK2, True)
+        menulist[0].item[1][1] = freq / 100000000
     elif(b2press is True):
-        freq = freq-100000000
+        b2press=False
+        freq = freq-10000000
         clkgen.set_freq(si5351.CLK2, freq)
         clkgen.output_enable(si5351.CLK2, True)
+        menulist[0].item[1][1] = freq / 100000000
     for i in range(len(menulist)):
         if(menulist[i].active is True):
             menulist[i].draw(display)

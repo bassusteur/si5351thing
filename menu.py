@@ -8,7 +8,7 @@ class Menu:
     
     def draw(submenu, display):
         display.fill(0)
-        display.text("{}".format(submenu.title), 32,1)
+        display.text("{}".format(submenu.title), 40,1)
         for i in range(len(submenu.item)):
             xa = submenu.item[i][2]
             ya = 19+i*10
